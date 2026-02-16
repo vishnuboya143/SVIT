@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SVIT ECE Department</title>
+
+  <style>
+    /* ===================== GLOBAL BACKGROUND ===================== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f9ff, #ffffff, #f0f7ff);
+      background-attachment: fixed;
+      color: #222;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top left, rgba(0, 200, 255, 0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(255, 213, 0, 0.10), transparent 55%),
+                  radial-gradient(circle at center, rgba(0, 41, 107, 0.06), transparent 60%);
+      z-index: -1;
+    }
+
+    /* ===================== NAVBAR ===================== */
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: #001f54;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 999;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+    }
+
+    nav .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      padding: 10px 15px;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: #00d4ff;
+      color: black;
+      box-shadow: 0px 0px 15px #00d4ff, 0px 0px 30px #00d4ff;
+    }
+
+    /* ===================== HAMBURGER ===================== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 28px;
+      height: 3px;
+      background: white;
+      border-radius: 5px;
+    }
+
+    /* ===================== MOBILE MENU ===================== */
+    @media(max-width: 900px) {
+      nav ul {
+        position: absolute;
+        top: 65px;
+        right: 0;
+        background: #001f54;
+        flex-direction: column;
+        width: 250px;
+        padding: 20px;
+        display: none;
+        border-radius: 0 0 0 20px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* ===================== WHITE RIBBON HEADER ===================== */
+    .white-ribbon {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.12);
+      border-bottom: 4px solid #00509d;
+      backdrop-filter: blur(10px);
+      flex-wrap: wrap;
+    }
+
+    .ribbon-left img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+    }
+
+    .ribbon-center {
+      flex: 1;
+      text-align: center;
+    }
+
+    .ribbon-center h1 {
+      margin: 5px 0;
+      font-size: 28px;
+      color: #00296b;
+    }
+
+    .ribbon-center h2 {
+      margin: 0;
+      font-size: 15px;
+      color: #444;
+    }
+
+    .ribbon-center p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .ribbon-building img {
+      width: 220px;
+      height: 110px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 3px solid #00509d;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+
+    .ribbon-building img:hover {
+      transform: scale(1.06);
+      border-color: #ffd500;
+    }
+
+    .ribbon-right {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .person-card {
+      text-align: center;
+      font-size: 13px;
+      color: #111;
+    }
+
+    .person-card img {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      border: 3px solid #00296b;
+      object-fit: cover;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
+
+    /* ===================== SECTION DESIGN ===================== */
+    section {
+      background: rgba(255, 255, 255, 0.75);
+      margin: 30px auto;
+      border-radius: 18px;
+      padding: 70px 50px;
+      max-width: 1200px;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.06);
+      backdrop-filter: blur(10px);
+    }
+
+    section h2 {
+      text-align: center;
+      color: #00296b;
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      padding: 70px 50px;
+      background: linear-gradient(135deg, #00296b, #00509d, #001f54);
+      border-radius: 0px 0px 40px 40px;
+      color: white;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.25);
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 45px;
+      margin: 0;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-top: 15px;
+    }
+
+    .hero img {
+      width: 400px;
+      border-radius: 20px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+      object-fit: cover;
+    }
+
+    @media(max-width: 900px) {
+      .hero img {
+        width: 100%;
+      }
+    }
+
+    /* ===================== CARDS ===================== */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
+      transition: 0.3s;
+      border-left: 5px solid #00509d;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.18);
+    }
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
+      border-left: 6px solid #00509d;
+      transition: 0.3s;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.7);
+      border-left: 6px solid #00d4ff;
+    }
+
+    .btn-link {
+      display: inline-block;
+      padding: 12px 18px;
+      background: #00509d;
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      margin-top: 15px;
+    }
+
+    .btn-link:hover {
+      background: #00d4ff;
+      color: black;
+      box-shadow: 0px 0px 15px #00d4ff, 0px 0px 30px #00d4ff;
+      transform: scale(1.08);
+    }
+
+    /* ===================== FORM ===================== */
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea, button {
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #00509d;
+      box-shadow: 0px 0px 10px rgba(0, 80, 157, 0.3);
+    }
+
+    button {
+      background: #00509d;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      border: none;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00d4ff;
+      color: black;
+      box-shadow: 0px 0px 15px #00d4ff, 0px 0px 30px #00d4ff;
+    }
+
+    /* ===================== MAP ===================== */
+    iframe {
+      width: 100%;
+      height: 350px;
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      text-align: center;
+      background: #001f54;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav>
+    <div class="logo">SVIT - ECE</div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <ul id="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#academics">Academics</a></li>
+      <li><a href="#faculty">Faculty</a></li>
+      <li><a href="#register">Register</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===================== WHITE RIBBON ===================== -->
+  <section class="white-ribbon">
+    <div class="ribbon-left">
+      <img src="C:\Users\VISHN\Desktop\html\SVIT\SVIT LOGO.png" alt="SVIT Logo">
+    </div>
+
+    <div class="ribbon-center">
+      <h1>Sri Venkateswara Institute of Technology</h1>
+      <h2>(Approved by AICTE, New Delhi & Affiliated to JNTUA, Anantapuramu)</h2>
+      <p>Hampapuram(V), Rapthadu(m), Anantapuramu - 515001, Andhra Pradesh</p>
+      <p><b>Department of Electronics and Communication Engineering (ECE)</b></p>
+    </div>
+
+    <div class="ribbon-building">
+      <img src="C:\Users\VISHN\Desktop\html\SVIT\Collage_Building.jpeg" alt="SVIT Building">
+    </div>
+
+      <div class="person-card">
+        <img src="C:\Users\VISHN\Desktop\html\SVIT\PRINCIPAL.jpeg" alt="Principal">
+        <p><b>Principal</b></p>
+      </div>
+
+      <div class="person-card">
+        <img src="C:\Users\VISHN\Desktop\html\SVIT\VV REDDY.png" alt="HOD">
+        <p><b>HOD</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HERO ===================== -->
+  <div class="hero" id="home">
+    <div class="hero-text">
+      <h1>Welcome to ECE Department</h1>
+      <p>
+        Electronics and Communication Engineering Department at SVIT provides
+        quality education, advanced research opportunities, and practical skills
+        in communication systems, embedded systems, VLSI, and signal processing.
+      </p>
+    </div>
+    <img src="C:\Users\VISHN\Desktop\html\SVIT\collage building.jpg" alt="SVIT Campus">
+  </div>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <h2>About Department</h2>
+    <p style="text-align:center; font-size:18px; line-height:1.7;">
+      The Department of Electronics and Communication Engineering (ECE) at SVIT, Anantapur,
+      is committed to delivering excellence in teaching, research, and innovation.
+      The department offers advanced laboratories, skilled faculty, and modern learning facilities.
+    </p>
+  </section>
+
+  <!-- ===================== ACADEMICS ===================== -->
+  <section id="academics">
+    <h2>Academics</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>UG Program</h3>
+        <p>B.Tech in Electronics and Communication Engineering.</p>
+      </div>
+
+      <div class="card">
+        <h3>Laboratories</h3>
+        <p>Communication Lab, DSP Lab, VLSI Lab, Embedded Systems Lab.</p>
+      </div>
+
+      <div class="card">
+        <h3>Research Areas</h3>
+        <p>IoT, VLSI Design, Signal Processing, Wireless Communication.</p>
+      </div>
+
+      <div class="card">
+        <h3>Workshops & Seminars</h3>
+        <p>Regular technical events, industrial visits, and training programs.</p>
+      </div>
+    </div>
+<br>
+    <div class="card-container">
+      <div class="card">
+        <h3>2nd Year Time Table</h3>
+        <p>Click below to view 2nd year timetable and academic calendar.</p>
+        <a href="C:\Users\VISHN\Desktop\html\SVIT\timetable.html" class="btn-link">View 2nd Year</a>
+      </div>
+
+      <div class="card">
+        <h3>3rd Year Time Table</h3>
+        <p>Click below to view 3rd year timetable and academic calendar.</p>
+        <a href= "C:\Users\VISHN\Desktop\html\SVIT\timetable.html" class= "btn-link">View 3rd Year</a>
+      </div>
+
+      <div class="card">
+        <h3>4th Year Time Table</h3>
+        <p>Click below to view 4th year timetable and academic calendar.</p>
+        <a href= "C:\Users\VISHN\Desktop\html\SVIT\timetable.html" class="btn-link">View 4th Year</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FACULTY ===================== -->
+  <section id="faculty">
+    <h2>Faculty Details</h2>
+    <div class="card-container">
+
+      <div class="card">
+        <h3>🧑‍🏫Convenor</h3>
+        <p><b>Dr Venkateswara Reddy Vennapusa</b></p>
+        <p>HOD & Professor</p>
+        <p>Email: vvreddy.ece@svitatp.ac.in</p>
+        <p>Email: hod.ece@svitatp.ac.in</p>
+        <p>Phone: 9494981688</p>
+      </div>
+
+      <div class="card">
+        <h3>🧑‍🏫Co-Convenor</h3>
+        <p><b>Dr V Shavali</b></p>
+        <p>Professor</p>
+        <p>Phone: 77889278</p>
+      </div>
+
+      <div class="card">
+        <h3>🧑‍🏫Coordinator</h3>
+        <p><b>Ms C. Shivani</b></p>
+        <p>Assistant Professor</p>
+        <p>Email: shivaniraghavhr@gmail.com</p>
+      </div>
+
+      <div class="card">
+        <h3>🧑‍🏫Coordinator</h3>
+        <p><b>Mr S Raghavendra</b></p>
+        <p>Assistant Professor</p>
+        <p>Email: raghav.matlab22@gmail.com</p>
+        <p>Phone: 9704684513</p>
+      </div>
+
+      <div class="card">
+        <h3>🧑‍🏫Coordinator</h3>
+        <p><b>Mr J.E. Siva</b></p>
+        <p>Assistant Professor</p>
+        <p>Phone: 9542075304</p>
+      </div>
+
+      <div class="card">
+        <h3>🧑‍🏫Coordinator</h3>
+        <p><b>Mr L. Rangaswamy</b></p>
+        <p>Assistant Professor</p>
+        <p>Phone: 8555830867</p>
+      </div>
+
+      <div class="card">
+        <h3>🧑‍🏫Coordinator</h3>
+        <p><b>Ms B. Kumari</b></p>
+        <p>Assistant Professor</p>
+        <p>Phone: 9550102170</p>
+      </div>
+
+      <div class="card">
+        <h3>🧑‍🏫Coordinator</h3>
+        <p><b>Miss B. Lakshmi Leela</b></p>
+        <p>Assistant Professor</p>
+        <p>Phone: 6300861317</p>
+      </div>
+
+      <div class="card">
+        <h3>🧑‍🏫Technical Staff</h3>
+        <p><b>Mr D. Deepak</b></p>
+        <p>System Administrator</p>
+        <p>Phone: 9908832311</p>
+      </div>
+
+      <div class="card">
+        <h3>🧑‍🏫Technical Staff</h3>
+        <p><b>Mr A. Srinivasulu</b></p>
+        <p>Attender</p>
+        <p>Phone: 6302933578</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== REGISTER FORM ===================== -->
+ <section id="register">
+  <h2>Student Registration Form</h2>
+
+  <iframe 
+    src="https://docs.google.com/forms/d/e/1FAIpQLSc7wuZcrLtMOyKGAxLyjln-YHIMJPzxuJKBOwHYiN7QoekuKA/viewform?embedded=true"
+    width="100%"
+    height="800"
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0">
+    Loading…
+  </iframe>
+</section>
+
+
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p style="text-align:center; font-size:18px;">
+      <b>Sri Venkateswara Institute of Technology</b><br>
+      Hampapuram(V), Rapthadu(M), Anantapuramu - 515001, Andhra Pradesh<br><br>
+      📞 Phone: 9494981688<br>
+      ✉️ Email: hod.ece@svitatp.ac.in
+    </p>
+    </section>
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <p>© 2026 SVIT - ECE Department | Designed for Official Department Website</p>
+  </footer>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
+    }
+  </script>
+
+</body>
+</html>
