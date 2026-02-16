@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SVIT ECE Academics</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f9ff, #ffffff, #f0f7ff);
+      background-attachment: fixed;
+      color: #222;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top left, rgba(0, 200, 255, 0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(255, 213, 0, 0.10), transparent 55%),
+                  radial-gradient(circle at center, rgba(0, 41, 107, 0.06), transparent 60%);
+      z-index: -1;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: #001f54;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+      z-index: 999;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+    }
+
+    nav .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      padding: 10px 15px;
+      border-radius: 12px;
+      transition: 0.3s ease-in-out;
+    }
+
+    nav ul li a:hover {
+      background: #00d4ff;
+      color: black;
+      box-shadow: 0px 0px 15px #00d4ff, 0px 0px 35px #00d4ff;
+      transform: scale(1.08);
+    }
+
+    section {
+      background: rgba(255, 255, 255, 0.75);
+      margin: 30px auto;
+      border-radius: 18px;
+      padding: 60px 40px;
+      max-width: 1200px;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.06);
+      backdrop-filter: blur(10px);
+    }
+
+    section h2 {
+      text-align: center;
+      color: #00296b;
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+
+    .academic-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.12);
+    }
+
+    .academic-table th {
+      background: #00296b;
+      color: white;
+      padding: 14px;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .academic-table td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .academic-table tr:hover td {
+      background: rgba(0, 212, 255, 0.18);
+      transform: scale(1.01);
+    }
+
+    .btn-back {
+      display: inline-block;
+      padding: 12px 18px;
+      background: #00509d;
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-back:hover {
+      background: #00d4ff;
+      color: black;
+      box-shadow: 0px 0px 15px #00d4ff, 0px 0px 30px #00d4ff;
+      transform: scale(1.08);
+    }
+
+    footer {
+      text-align: center;
+      background: #001f54;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+      box-shadow: 0px -5px 20px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">SVIT - ECE Academics</div>
+    <ul>
+      <li><a href="#year2">2nd Year</a></li>
+      <li><a href="#year3">3rd Year</a></li>
+      <li><a href="#year4">4th Year</a></li>
+      <li><a href="C:\Users\VISHN\Desktop\html\SVIT\SVIT.html">Home</a></li>
+    </ul>
+  </nav>
+
+  <!-- ================= 2ND YEAR ================= -->
+  <section id="year2">
+    <h2>2nd Year Time Table</h2>
+
+    <div style="overflow-x:auto;">
+      <table class="academic-table">
+        <tr>
+          <th>Day</th><th>9-10</th><th>10-11</th><th>11-12</th><th>12-1</th><th>1-2</th><th>2-3</th><th>3-4</th>
+        </tr>
+        <tr><td>Mon</td><td>Maths</td><td>DE</td><td>Network</td><td>Python</td><td rowspan="6" style="background:#ffeaa7;font-weight:bold;">LUNCH</td><td>Lab</td><td>Lab</td></tr>
+        <tr><td>Tue</td><td>DE</td><td>Python</td><td>Network</td><td>Maths</td><td>English</td><td>Library</td></tr>
+        <tr><td>Wed</td><td>Network</td><td>Maths</td><td>Python</td><td>DE</td><td>Lab</td><td>Lab</td></tr>
+        <tr><td>Thu</td><td>Python</td><td>DE</td><td>Maths</td><td>Network</td><td>English</td><td>Sports</td></tr>
+        <tr><td>Fri</td><td>Maths</td><td>Network</td><td>DE</td><td>Python</td><td>Seminar</td><td>Project</td></tr>
+        <tr><td>Sat</td><td>Project</td><td>Project</td><td>Library</td><td>Sports</td><td>Workshop</td><td>Workshop</td></tr>
+      </table>
+    </div>
+
+    <h2 style="font-size:26px;">2nd Year Academic Calendar</h2>
+
+    <div style="overflow-x:auto;">
+      <table class="academic-table">
+        <tr><th>Month</th><th>Activity</th><th>Date</th></tr>
+        <tr><td>June</td><td>Class Work Starts</td><td>1st Week</td></tr>
+        <tr><td>July</td><td>Unit Test 1</td><td>3rd Week</td></tr>
+        <tr><td>Aug</td><td>Mid Exam 1</td><td>2nd Week</td></tr>
+        <tr><td>Sep</td><td>Mid Exam 2</td><td>4th Week</td></tr>
+        <tr><td>Nov</td><td>Semester End Exams</td><td>3rd Week</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= 3RD YEAR ================= -->
+  <section id="year3">
+    <h2>3rd Year Time Table</h2>
+
+    <div style="overflow-x:auto;">
+      <table class="academic-table">
+        <tr>
+          <th>Day</th><th>9-10</th><th>10-11</th><th>11-12</th><th>12-1</th><th>1-2</th><th>2-3</th><th>3-4</th>
+        </tr>
+        <tr><td>Mon</td><td>DSP</td><td>Analog</td><td>Signals</td><td>MPMC</td><td rowspan="6" style="background:#ffeaa7;font-weight:bold;">LUNCH</td><td>Lab</td><td>Lab</td></tr>
+        <tr><td>Tue</td><td>Analog</td><td>Signals</td><td>DSP</td><td>MPMC</td><td>Library</td><td>Seminar</td></tr>
+        <tr><td>Wed</td><td>Signals</td><td>MPMC</td><td>DSP</td><td>Analog</td><td>Lab</td><td>Lab</td></tr>
+        <tr><td>Thu</td><td>DSP</td><td>Analog</td><td>MPMC</td><td>Signals</td><td>Project</td><td>Project</td></tr>
+        <tr><td>Fri</td><td>MPMC</td><td>Signals</td><td>DSP</td><td>Analog</td><td>Workshop</td><td>Workshop</td></tr>
+        <tr><td>Sat</td><td>Seminar</td><td>Project</td><td>Library</td><td>Sports</td><td>Training</td><td>Training</td></tr>
+      </table>
+    </div>
+
+    <h2 style="font-size:26px;">3rd Year Academic Calendar</h2>
+
+    <div style="overflow-x:auto;">
+      <table class="academic-table">
+        <tr><th>Month</th><th>Activity</th><th>Date</th></tr>
+        <tr><td>June</td><td>Classes Start</td><td>1st Week</td></tr>
+        <tr><td>July</td><td>Unit Test</td><td>3rd Week</td></tr>
+        <tr><td>Aug</td><td>Mid Exam 1</td><td>2nd Week</td></tr>
+        <tr><td>Oct</td><td>Mid Exam 2</td><td>1st Week</td></tr>
+        <tr><td>Nov</td><td>Semester End Exams</td><td>3rd Week</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ================= 4TH YEAR ================= -->
+  <section id="year4">
+    <h2>4th Year Time Table</h2>
+
+    <div style="overflow-x:auto;">
+      <table class="academic-table">
+        <tr>
+          <th>Day</th><th>9-10</th><th>10-11</th><th>11-12</th><th>12-1</th><th>1-2</th><th>2-3</th><th>3-4</th>
+        </tr>
+        <tr><td>Mon</td><td>VLSI</td><td>Wireless</td><td>IoT</td><td>Project</td><td rowspan="6" style="background:#ffeaa7;font-weight:bold;">LUNCH</td><td>Project</td><td>Project</td></tr>
+        <tr><td>Tue</td><td>Wireless</td><td>IoT</td><td>VLSI</td><td>Project</td><td>Seminar</td><td>Library</td></tr>
+        <tr><td>Wed</td><td>IoT</td><td>VLSI</td><td>Wireless</td><td>Project</td><td>Project</td><td>Project</td></tr>
+        <tr><td>Thu</td><td>VLSI</td><td>Wireless</td><td>IoT</td><td>Seminar</td><td>Training</td><td>Training</td></tr>
+        <tr><td>Fri</td><td>Project</td><td>Project</td><td>Project</td><td>Project</td><td>Workshop</td><td>Workshop</td></tr>
+        <tr><td>Sat</td><td>Training</td><td>Training</td><td>Library</td><td>Sports</td><td>Placement</td><td>Placement</td></tr>
+      </table>
+    </div>
+
+    <h2 style="font-size:26px;">4th Year Academic Calendar</h2>
+
+    <div style="overflow-x:auto;">
+      <table class="academic-table">
+        <tr><th>Month</th><th>Activity</th><th>Date</th></tr>
+        <tr><td>June</td><td>Final Year Classes Start</td><td>1st Week</td></tr>
+        <tr><td>July</td><td>Project Review - 1</td><td>3rd Week</td></tr>
+        <tr><td>Aug</td><td>Mid Exam</td><td>2nd Week</td></tr>
+        <tr><td>Oct</td><td>Project Review - 2</td><td>2nd Week</td></tr>
+        <tr><td>Nov</td><td>Final Semester Exams</td><td>3rd Week</td></tr>
+      </table>
+    </div>
+
+    <br>
+    <center>
+      <a href="index.html" class="btn-back">⬅ Back to Home</a>
+    </center>
+  </section>
+
+  <footer>
+    <p>© 2026 SVIT - ECE Department Academics Page</p>
+  </footer>
+
+</body>
+</html>
