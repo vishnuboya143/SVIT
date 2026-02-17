@@ -454,51 +454,36 @@
     }
 
     /* ===================== MAP ===================== */
- .contact-section {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 70px 50px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.75);
-  box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
-  backdrop-filter: blur(10px);
+/* Hover Effect for Contact Details Box */
+.contact-details:hover {
+  transform: translateY(-8px) scale(1.02);
+  transition: 0.3s ease-in-out;
+  border-left: 6px solid #00d4ff;
+  box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.7),
+              0px 0px 30px rgba(0, 212, 255, 0.5);
 }
 
-.contact-section h2 {
-  text-align: center;
-  font-size: 34px;
+/* Hover Effect for Map Box */
+.contact-map:hover {
+  transform: translateY(-8px) scale(1.02);
+  transition: 0.3s ease-in-out;
+  box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.7),
+              0px 0px 30px rgba(0, 212, 255, 0.5);
+}
+
+/* Hover Effect for Heading Text */
+.contact-details h3:hover {
+  color: #00d4ff;
+  text-shadow: 0px 0px 10px rgba(0, 212, 255, 0.9);
+  transition: 0.3s;
+}
+
+/* Hover Effect for Paragraph Text */
+.contact-details p:hover {
   color: #00296b;
-  margin-bottom: 35px;
+  transition: 0.3s;
 }
 
-.contact-container {
-  display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.contact-details {
-  flex: 1;
-  min-width: 280px;
-  background: white;
-  padding: 25px;
-  border-radius: 18px;
-  box-shadow: 0px 6px 15px rgba(0,0,0,0.12);
-  border-left: 6px solid #00509d;
-}
-
-.contact-details h3 {
-  margin-top: 0;
-  color: #001f54;
-  font-size: 22px;
-}
-
-.contact-details p {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #333;
-}
 
 .contact-map {
   flex: 1;
