@@ -454,43 +454,100 @@
     }
 
     /* ===================== MAP ===================== */
-/* Hover Effect for Contact Details Box */
-.contact-details:hover {
-  transform: translateY(-8px) scale(1.02);
-  transition: 0.3s ease-in-out;
-  border-left: 6px solid #00d4ff;
-  box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.7),
-              0px 0px 30px rgba(0, 212, 255, 0.5);
+.contact-section {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 80px 50px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 8px 25px rgba(0,0,0,0.08);
+  backdrop-filter: blur(12px);
 }
 
-/* Hover Effect for Map Box */
-.contact-map:hover {
-  transform: translateY(-8px) scale(1.02);
-  transition: 0.3s ease-in-out;
-  box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.7),
-              0px 0px 30px rgba(0, 212, 255, 0.5);
-}
-
-/* Hover Effect for Heading Text */
-.contact-details h3:hover {
-  color: #00d4ff;
-  text-shadow: 0px 0px 10px rgba(0, 212, 255, 0.9);
-  transition: 0.3s;
-}
-
-/* Hover Effect for Paragraph Text */
-.contact-details p:hover {
+.contact-section h2 {
+  text-align: center;
+  font-size: 38px;
   color: #00296b;
-  transition: 0.3s;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
 }
 
+.contact-container {
+  display: flex;
+  gap: 35px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
 
+/* Contact Card */
+.contact-details {
+  flex: 1;
+  min-width: 320px;
+  background: white;
+  padding: 35px;
+  border-radius: 22px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.12);
+  border-left: 7px solid #00509d;
+  transition: 0.35s ease-in-out;
+}
+
+.contact-details:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-left: 7px solid #00d4ff;
+  box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.8),
+              0px 0px 35px rgba(0, 212, 255, 0.5);
+}
+
+.contact-details h3 {
+  margin-top: 0;
+  color: #001f54;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contact-details p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Button */
+.direction-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 14px 22px;
+  background: #00509d;
+  color: white;
+  border-radius: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+
+.direction-btn:hover {
+  background: #00d4ff;
+  color: black;
+  box-shadow: 0px 0px 15px #00d4ff,
+              0px 0px 30px #00d4ff;
+  transform: scale(1.08);
+}
+
+/* Map Card */
 .contact-map {
   flex: 1;
-  min-width: 280px;
-  border-radius: 18px;
+  min-width: 320px;
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0px 6px 15px rgba(0,0,0,0.12);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.12);
+  transition: 0.35s ease-in-out;
+}
+
+.contact-map:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.8),
+              0px 0px 35px rgba(0, 212, 255, 0.5);
 }
     /* ===================== FOOTER ===================== */
     footer {
@@ -786,11 +843,7 @@
 
 
   <!-- ===================== CONTACT ===================== -->
-  <section id="contact" class="contact-section">
-  <h2>📞 Contact Us</h2>
-
-  <div class="contact-container">
-<section id="contact" class="contact-section">
+ <section id="contact" class="contact-section">
   <h2>📞 Contact Us</h2>
 
   <div class="contact-container">
@@ -798,18 +851,35 @@
     <!-- Contact Details -->
     <div class="contact-details">
       <h3>SVIT - ECE Department</h3>
-      <p><b>Address:</b> Sri Venkateswara Institute of Technology, Anantapur, Andhra Pradesh, India</p>
-      <p><b>Email:</b> hod.ece@svitatp.ac.in</p>
-      <p><b>Phone:</b> +91 9494981688</p>
+
+      <p><b>📍 Address:</b><br>
+        Sri Venkateswara Institute of Technology,<br>
+        Anantapur, Andhra Pradesh, India
+      </p>
+
+      <p><b>📧 Email:</b><br>
+        hod.ece@svitatp.ac.in <br>
+        vvreddy.ece@svitatp.ac.in
+      </p>
+
+      <p><b>📞 Phone:</b><br>
+        +91 9494981688
+      </p>
+
+      <a href="https://www.google.com/maps?q=Sri+Venkateswara+Institute+of+Technology,+Anantapur"
+         target="_blank"
+         class="direction-btn">
+        📌 Get Directions
+      </a>
     </div>
 
     <!-- Google Map -->
     <div class="contact-map">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10922.349227278939!2d77.61650640761064!3d14.562933138409017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb148e3c8190ba9%3A0xdc3fd08307ae6caf!2sSVIT%20Anantapur!5e0!3m2!1sen!2sin!4v1715287651203!5m2!1sen!2sin"
+        src="https://www.google.com/maps?q=Sri+Venkateswara+Institute+of+Technology,+Anantapur&output=embed"
         width="100%"
-        height="320"
-        style="border:0; border-radius:18px;"
+        height="380"
+        style="border:0;"
         allowfullscreen=""
         loading="lazy">
       </iframe>
@@ -817,6 +887,7 @@
 
   </div>
 </section>
+
 
 
   <!-- ===================== FOOTER ===================== -->
