@@ -87,43 +87,6 @@
       border-radius: 5px;
     }
 
-/* ===================== Form ===================== */
-     form {
-      max-width: 600px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    input, textarea, button {
-      padding: 14px;
-      font-size: 16px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-      outline: none;
-    }
-
-    input:focus, textarea:focus {
-      border-color: #00509d;
-      box-shadow: 0px 0px 10px rgba(0, 80, 157, 0.3);
-    }
-
-    button {
-      background: #00509d;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-      border: none;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #00d4ff;
-      color: black;
-      box-shadow: 0px 0px 15px #00d4ff, 0px 0px 30px #00d4ff;
-    }
-
     /* ===================== MOBILE MENU ===================== */
     @media(max-width: 900px) {
       nav ul {
@@ -245,6 +208,79 @@
       font-size: 32px;
       margin-bottom: 25px;
     }
+
+    /* ===================== OFFICIALS SECTION ===================== */
+.officials-section {
+  padding: 70px 50px;
+  max-width: 1250px;
+  margin: 40px auto;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.officials-section h2 {
+  text-align: center;
+  font-size: 36px;
+  color: #00296b;
+  margin-bottom: 45px;
+  letter-spacing: 1px;
+}
+
+.officials-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.official-card {
+  background: white;
+  padding: 28px 20px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0px 8px 18px rgba(0,0,0,0.12);
+  border-top: 6px solid #00509d;
+  transition: 0.35s ease-in-out;
+}
+
+.official-card:hover {
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.8),
+              0px 0px 35px rgba(0, 212, 255, 0.6);
+  border-top: 6px solid #00d4ff;
+}
+
+.official-card img {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  border: 4px solid #00509d;
+  object-fit: cover;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+.official-card:hover img {
+  border: 4px solid #00d4ff;
+  box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.9);
+}
+
+.official-card h3 {
+  margin: 12px 0;
+  font-size: 19px;
+  color: #001f54;
+  font-weight: bold;
+}
+
+.official-card p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+
 
     /* ===================== HERO ===================== */
     .hero {
@@ -446,17 +482,6 @@
     <div class="ribbon-building">
       <img src="Collage_Building.jpeg" alt="SVIT Building">
     </div>
-
-      <div class="person-card">
-        <img src="PRINCIPAL.jpeg" alt="Principal">
-        <p><b>Principal</b></p>
-      </div>
-
-      <div class="person-card">
-        <img src="VV REDDY.png" alt="HOD">
-        <p><b>HOD</b></p>
-      </div>
-    </div>
   </section>
 
   <!-- ===================== HERO ===================== -->
@@ -469,7 +494,7 @@
         in communication systems, embedded systems, VLSI, and signal processing.
       </p>
     </div>
-    <img src="collage building.jpg" alt="SVIT Campus">
+    <img src="C:\Users\VISHN\Desktop\html\SVIT\collage building.jpg" alt="SVIT Campus">
   </div>
 
   <!-- ===================== ABOUT ===================== -->
@@ -527,6 +552,81 @@
       </div>
     </div>
   </section>
+
+  <section id="officials" class="officials-section">
+  <h2>College Officials</h2>
+<!-- ===================== FACULTY ===================== -->
+  <div class="officials-container">
+
+    <!-- CEO -->
+    <div class="official-card">
+      <img src="CEO.jpg" alt="CEO">
+      <h3>CEO</h3>
+      <p><b>Name:</b> Sri. Anand Kumar Mokshagundam</p>
+      <p><b>SVIT, Anantapur</b></p>
+    </div>
+
+    <!-- MD -->
+    <div class="official-card">
+      <img src="Managing Director.jpeg" alt="Managing Director">
+      <h3>Managing Director</h3>
+      <p><b>Name:</b>Sri. V. Ramakanth Reddy</p>
+      <p><b>SVIT, Anantapur</b></p>
+    </div>
+
+    <!-- Correspondent -->
+    <div class="official-card">
+      <img src="Correspondent.jpeg" alt="Correspondent">
+      <h3>Correspondent</h3>
+      <p><b>Name:</b> Sri. V.B.R Sharma</p>
+      <p><b>SVIT, Anantapur</b></p>
+    </div>
+
+    <!-- President -->
+    <div class="official-card">
+      <img src="President.jpeg" alt="President">
+      <h3>President</h3>
+      <p><b>Name:</b> Sri. B. V. Krishna Reddy</p>
+      <p><b>SVIT, Anantapur</b></p>
+    </div>
+
+    <!-- Vice President -->
+    <div class="official-card">
+      <img src="Vice President.jpeg" alt="Vice President">
+      <h3>Vice President</h3>
+      <p><b>Name:</b>Sri. Mr. V. Ravindra Reddy</p>
+      <p><b>SVIT, Anantapur</b></p>
+    </div>
+
+    <!-- Principal -->
+    <div class="official-card">
+      <img src="PRINCIPAL.jpeg" alt="Principal">
+      <h3>Principal</h3>
+      <p><b>Name:</b>Dr. T. Vishnu Vardhan</p>
+      <p><b>SVIT, Anantapur</b></p>
+    </div>
+
+    <!-- HOD -->
+    <div class="official-card">
+      <img src="VV REDDY.png" alt="HOD">
+      <h3>HOD - ECE Department</h3>
+      <p><b>Name:</b> Dr. Venkateswara Reddy Vennapusa</p>
+      <p><b>Email:</b> hod.ece@svitatp.ac.in</p>
+      <p><b>Mobile:</b> 9494981688</p>
+    </div>
+
+    <!-- Co-Convenor -->
+    <div class="official-card">
+      <img src="SHAVALI.jpeg" alt="Co-Convenor">
+      <h3>Co-Convenor</h3>
+      <p><b>Name:</b> Dr. V. Shavali</p>
+      <p><b>Designation:</b> Professor</p>
+      <p><b>Mobile:</b> 77889278</p>
+    </div>
+
+  </div>
+</section>
+
 
   <!-- ===================== FACULTY ===================== -->
   <section id="faculty">
@@ -610,22 +710,19 @@
   </section>
 
   <!-- ===================== REGISTER FORM ===================== -->
-<section id="register">
-    <h2>Student Registration Form</h2>
+ <section id="register">
+  <h2>Student Registration Form</h2>
 
-    <!-- Replace this Google form link with your own -->
-    <form action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="POST" target="_blank">
-      <input type="text" name="entry.1234567890" placeholder="Enter Full Name" required>
-      <input type="email" name="entry.0987654321" placeholder="Enter Email" required>
-      <input type="text" name="entry.1122334455" placeholder="Enter Mobile Number" required>
-      <textarea name="entry.6677889900" placeholder="Enter Message / Query" rows="4"></textarea>
-
-      <button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSc7wuZcrLtMOyKGAxLyjln-YHIMJPzxuJKBOwHYiN7QoekuKA/viewform?usp=dialog', '_blank')">
-  Register Now
-</button>
-
-    </form>
-  </section>
+  <iframe 
+    src="https://docs.google.com/forms/d/e/1FAIpQLSc7wuZcrLtMOyKGAxLyjln-YHIMJPzxuJKBOwHYiN7QoekuKA/viewform?embedded=true"
+    width="100%"
+    height="800"
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0">
+    Loading…
+  </iframe>
+</section>
 
 
 
