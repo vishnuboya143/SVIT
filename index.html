@@ -313,33 +313,47 @@
 
 
     /* ===================== HERO ===================== */
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-      padding: 70px 50px;
-      background: linear-gradient(135deg, #00296b, #00509d, #001f54);
-      border-radius: 0px 0px 40px 40px;
-      color: white;
-      box-shadow: 0px 10px 25px rgba(0,0,0,0.25);
-      flex-wrap: wrap;
-    }
+   .hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 90px 50px;
+  border-radius: 0px 0px 40px 40px;
+  color: white;
+  text-align: center;
 
-    .hero-text {
-      flex: 1;
-    }
+  background: url("collage building.jpg") center/cover no-repeat;
+  position: relative;
+  box-shadow: 0px 10px 25px rgba(0,0,0,0.25);
+}
 
-    .hero-text h1 {
-      font-size: 45px;
-      margin: 0;
-    }
+/* Dark overlay for text readability */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 0px 0px 40px 40px;
+}
 
-    .hero-text p {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-top: 15px;
-    }
+/* Keep text above overlay */
+.hero-text {
+  position: relative;
+  max-width: 850px;
+  z-index: 1;
+}
+
+.hero-text h1 {
+  font-size: 48px;
+  margin: 0;
+}
+
+.hero-text p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-top: 15px;
+}
+
 
     .hero img {
       width: 400px;
@@ -354,107 +368,491 @@
       }
     }
 
-    /* ===================== CARDS ===================== */
+   
+    /* ===================== FACULTY CARDS (4 in a row) ===================== */
+#faculty .card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 22px;
+  margin-top: 25px;
+}
+
+/* Card normal size */
+#faculty .card {
+  background: white;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0px 6px 16px rgba(0,0,0,0.08);
+  border-left: 6px solid #00509d;
+  transition: 0.3s;
+  cursor: pointer;
+  text-align: center;
+  min-height: 220px;
+}
+
+/* Hover effect */
+#faculty .card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.6);
+  border-left: 6px solid #00d4ff;
+}
+
+/* Faculty image size normal */
+#faculty .card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00509d;
+  margin-bottom: 12px;
+  transition: 0.3s;
+}
+
+/* Image hover glow */
+#faculty .card:hover img {
+  border-color: #00d4ff;
+  transform: scale(1.08);
+  box-shadow: 0px 0px 15px rgba(0, 212, 255, 0.8);
+}
+
+/* Responsive view */
+@media(max-width: 1100px) {
+  #faculty .card-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards */
+  }
+}
+
+@media(max-width: 850px) {
+  #faculty .card-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards */
+  }
+}
+
+@media(max-width: 500px) {
+  #faculty .card-container {
+    grid-template-columns: 1fr; /* 1 card */
+  }
+}
+
+/* ===================== ACADEMICS SECTION STYLING ===================== */
+#academics {
+  background: rgba(255, 255, 255, 0.82);
+  padding: 80px 60px;
+  border-radius: 25px;
+  max-width: 1250px;
+  margin: 50px auto;
+  box-shadow: 0px 10px 28px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  border-top: 6px solid #00509d;
+  transition: 0.4s ease-in-out;
+}
+
+#academics:hover {
+  transform: scale(1.01);
+  box-shadow: 0px 0px 22px rgba(0, 212, 255, 0.35),
+              0px 0px 35px rgba(0, 212, 255, 0.25);
+}
+
+/* Academics Title */
+#academics h2 {
+  font-size: 40px;
+  color: #00296b;
+  margin-bottom: 45px;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+/* Underline effect */
+#academics h2::after {
+  content: "";
+  display: block;
+  width: 90px;
+  height: 5px;
+  background: linear-gradient(90deg, #00d4ff, #00509d, #ffd500);
+  margin: 12px auto 0;
+  border-radius: 50px;
+}
+
+/* Academics Card Container */
+#academics .card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Academics Card */
+#academics .card {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 22px;
+  box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.10);
+  border-left: 8px solid #00509d;
+  transition: 0.35s ease-in-out;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Top Shine Effect */
+#academics .card::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 140px;
+  height: 140px;
+  background: rgba(0, 212, 255, 0.25);
+  border-radius: 50%;
+  filter: blur(10px);
+  transition: 0.5s;
+}
+
+/* Hover Effects */
+#academics .card:hover {
+  transform: translateY(-12px) scale(1.04);
+  border-left: 8px solid #00d4ff;
+  box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.6),
+              0px 0px 35px rgba(0, 212, 255, 0.4);
+}
+
+#academics .card:hover::before {
+  transform: scale(1.5);
+  opacity: 0.7;
+}
+
+/* Academics Card Heading */
+#academics .card h3 {
+  font-size: 22px;
+  color: #001f54;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Academics Card Text */
+#academics .card p {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Buttons in Academics Section */
+#academics .btn-link {
+  display: inline-block;
+  padding: 12px 22px;
+  margin-top: 18px;
+  background: linear-gradient(135deg, #00509d, #00296b);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 15px;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+#academics .btn-link:hover {
+  background: linear-gradient(135deg, #00d4ff, #00509d);
+  color: black;
+  transform: scale(1.08);
+  box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.7),
+              0px 0px 35px rgba(0, 212, 255, 0.5);
+}
+
+/* Responsive Padding */
+@media(max-width: 768px) {
+  #academics {
+    padding: 60px 20px;
+  }
+
+  #academics h2 {
+    font-size: 32px;
+  }
+}
+
+/*================FACULTY SECTION=============/*
+
+/* FACULTY CARDS */
     .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 25px;
     }
 
     .card {
+      width: 250px;
       background: white;
-      padding: 25px;
       border-radius: 18px;
-      box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
-      transition: 0.3s;
-      border-left: 5px solid #00509d;
-    }
-
-    .card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0px 10px 25px rgba(0,0,0,0.18);
-    }
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 18px;
-      box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
-      border-left: 6px solid #00509d;
-      transition: 0.3s;
-      cursor: pointer;
+      padding: 18px;
       text-align: center;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0px 5px 12px rgba(0,0,0,0.15);
+      border-top: 6px solid #00509d;
     }
 
     .card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0px 0px 18px rgba(0, 212, 255, 0.7);
-      border-left: 6px solid #00d4ff;
+      transform: scale(1.05);
+      box-shadow: 0px 10px 22px rgba(0,0,0,0.25);
+      border-top: 6px solid #00d4ff;
     }
 
-    .btn-link {
-      display: inline-block;
-      padding: 12px 18px;
-      background: #00509d;
-      color: white;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
+    .card img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #00509d;
+      margin-bottom: 10px;
       transition: 0.3s;
-      margin-top: 15px;
     }
 
-    .btn-link:hover {
-      background: #00d4ff;
-      color: black;
-      box-shadow: 0px 0px 15px #00d4ff, 0px 0px 30px #00d4ff;
+    .card:hover img {
+      border: 4px solid #00d4ff;
+      box-shadow: 0px 0px 15px rgba(0, 212, 255, 0.8);
       transform: scale(1.08);
     }
 
-    /* ===================== FORM ===================== */
-    form {
-      max-width: 600px;
-      margin: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+    .card h3 {
+      margin: 10px 0;
+      color: #001f54;
     }
 
-    input, textarea, button {
-      padding: 14px;
-      font-size: 16px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-      outline: none;
+    .card p {
+      margin: 6px 0;
+      color: #333;
+      font-size: 14px;
     }
 
-    input:focus, textarea:focus {
-      border-color: #00509d;
-      box-shadow: 0px 0px 10px rgba(0, 80, 157, 0.3);
-    }
+    /* MODAL BACKGROUND */
+.faculty-modal {
+  display: none;   /* ✅ modal hidden initially */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
 
-    button {
-      background: #00509d;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+
+/* MODAL CONTENT */
+.faculty-modal-content {
+  background: white;
+  width: 95%;
+  max-width: 650px;
+  max-height: 85vh;   /* IMPORTANT */
+  overflow-y: auto;   /* IMPORTANT */
+
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+
+  animation: popup 0.3s ease-in-out;
+  box-shadow: 0px 8px 25px rgba(0,0,0,0.4);
+}
+
+/* Scrollbar Styling */
+.faculty-modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+.faculty-modal-content::-webkit-scrollbar-thumb {
+  background: #00509d;
+  border-radius: 10px;
+}
+.faculty-modal-content::-webkit-scrollbar-track {
+  background: #e6f2ff;
+}
+
+@keyframes popup {
+  from {transform: scale(0.7); opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
+}
+
+.faculty-modal-content img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 5px solid #00509d;
+  object-fit: cover;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 18px rgba(0,0,0,0.25);
+}
+
+.faculty-about {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #f1f7ff;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: sticky;
+  top: 10px;
+  float: right;
+  cursor: pointer;
+  font-size: 26px;
+  font-weight: bold;
+  color: red;
+}
+
+.close-btn:hover {
+  color: darkred;
+  transform: scale(1.1);
+}
+
+.faculty-heading {
+  text-align: center;
+  font-size: 42px;
+  font-weight: bold;
+  color: #00296b;
+  margin-bottom: 50px;
+  position: relative;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Underline Style */
+.faculty-heading::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 6px;
+  background: linear-gradient(90deg, #00d4ff, #00509d, #ffd500);
+  margin: 12px auto 0;
+  border-radius: 20px;
+  box-shadow: 0px 4px 12px rgba(0, 212, 255, 0.5);
+}
+
+
+
+/*=============== FOOTER =================================*/
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #001f54;
       color: white;
-      cursor: pointer;
+      margin-top: 40px;
+    }
+
+    /* ===================== FORM ===================== */
+    .form-container {
+      max-width: 900px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    h2 {
+      text-align: center;
+      color: #00296b;
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+
+    label {
       font-weight: bold;
-      border: none;
+      display: block;
+      margin: 15px 0 8px;
+      color: #003566;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 2px solid #ddd;
+      outline: none;
+      font-size: 14px;
       transition: 0.3s;
     }
 
-    button:hover {
+    input:focus, textarea:focus {
+      border-color: #00d4ff;
+      box-shadow: 0px 0px 10px rgba(0, 212, 255, 0.6);
+    }
+
+    textarea {
+      resize: none;
+      height: 120px;
+    }
+
+    .participant-box {
+      background: #f1fbff;
+      padding: 18px;
+      margin-top: 15px;
+      border-radius: 15px;
+      border-left: 6px solid #00d4ff;
+      transition: 0.3s;
+    }
+
+    .participant-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0px 0px 15px rgba(0, 212, 255, 0.5);
+    }
+
+    .participant-box h4 {
+      margin: 0 0 15px;
+      color: #001f54;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: #00509d;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 14px;
+      margin-top: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
       background: #00d4ff;
       color: black;
       box-shadow: 0px 0px 15px #00d4ff, 0px 0px 30px #00d4ff;
+      transform: scale(1.03);
     }
+    input[type="file"] {
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid #ddd;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+input[type="file"]:hover {
+  border-color: #00d4ff;
+  box-shadow: 0px 0px 10px rgba(0, 212, 255, 0.6);
+}
+
 
     /* ===================== MAP ===================== */
-.contact-section {
+ .contact-section {
   max-width: 1200px;
   margin: 50px auto;
   padding: 80px 50px;
@@ -602,16 +1000,16 @@
 
   <!-- ===================== HERO ===================== -->
   <div class="hero" id="home">
-    <div class="hero-text">
-      <h1>Welcome to ECE Department</h1>
-      <p>
-        Electronics and Communication Engineering Department at SVIT provides
-        quality education, advanced research opportunities, and practical skills
-        in communication systems, embedded systems, VLSI, and signal processing.
-      </p>
-    </div>
-    <img src="collage building.jpg" alt="SVIT Campus">
+  <div class="hero-text">
+    <h1>Welcome to ECE Department</h1>
+    <p>
+      Electronics and Communication Engineering Department at SVIT provides
+      quality education, advanced research opportunities, and practical skills
+      in communication systems, embedded systems, VLSI, and signal processing.
+    </p>
   </div>
+</div>
+
 
   <!-- ===================== ABOUT ===================== -->
   <section id="about">
@@ -666,12 +1064,17 @@
         <p>Click below to view 4th year timetable and academic calendar.</p>
         <a href= "timetable.html" class="btn-link">View 4th Year</a>
       </div>
+    <div class="card">
+        <h3>M.Tech 1stYear Time Table</h3>
+        <p>Click below to view 4th year timetable and academic calendar.</p>
+        <a href= "timetable.html" class="btn-link">M.Tech 1st year </a>
+      </div>
     </div>
   </section>
 
-  <section id="officials" class="officials-section">
+  <section id="academics" class="officials-section">
   <h2>College Officials</h2>
-<!-- ===================== FACULTY ===================== -->
+<!-- ===================== RESPECTED HONORS ===================== -->
   <div class="officials-container">
 
     <!-- CEO -->
@@ -746,98 +1149,324 @@
 
   <!-- ===================== FACULTY ===================== -->
   <section id="faculty">
-    <h2>Faculty Details</h2>
+    <h2 id='modelName' class="faculty-heading">Faculty Details</h2>
+
     <div class="card-container">
 
-      <div class="card">
-        <h3>🧑‍🏫Convenor</h3>
+      <div class="card" onclick="openFacultyProfile(
+        'VV REDDY.png',
+        'Dr Venkateswara Reddy Vennapusa',
+        'HOD & Professor (Convenor)',
+        'vvreddy.ece@svitatp.ac.in <br> hod.ece@svitatp.ac.in',
+        '9494981688',
+
+        `Dr. Venkateswara Reddy Vennapusa is an Professor at SVIT Engineering College, Anantapur, with  22 years of academic experience. <br><br>
+        Convenor of the ECE Department, he is a dedicated educator and academic leader with over 22 years of enriching experience in teaching.
+
+
+         Research and academic administration in Electronics and Communication Engineering. Currently serving as Professor & Head of the Department (ECE) SVIT, he is deeply committed to shaping young engineers through knowledge, mentorship, and values. 
+         With strong expertise in RF systems, Microstrip Antennas, and UMTB design, his journey reflects a passion for innovation, disciplined research, and continuous learning. Known for aligning academic excellence with NBA and NAAC quality benchmarks, he believes that education is not merely about imparting knowledge, but about inspiring curiosity, integrity, and lifelong learning among students.
+         and Head of ECE Department. Highly experienced faculty and academic leader.`
+      )">
+        <img src="VV REDDY.png" alt="Convenor">
+        <h3>🧑‍🏫 Convenor</h3>
         <p><b>Dr Venkateswara Reddy Vennapusa</b></p>
         <p>HOD & Professor</p>
-        <p>Email: vvreddy.ece@svitatp.ac.in</p>
-        <p>Email: hod.ece@svitatp.ac.in</p>
-        <p>Phone: 9494981688</p>
       </div>
 
-      <div class="card">
-        <h3>🧑‍🏫Co-Convenor</h3>
+      <div class="card" onclick="openFacultyProfile(
+        'SHAVALI.jpeg',
+        'Dr V Shavali',
+        'Professor (Co-Convenor)',
+        'Not Available',
+        '77889278',
+        'Co-Convenor of the event and Professor in ECE Department.'
+      )">
+        <img src="SHAVALI.jpeg" alt="Co-Convenor">
+        <h3>🧑‍🏫 Co-Convenor</h3>
         <p><b>Dr V Shavali</b></p>
         <p>Professor</p>
-        <p>Phone: 77889278</p>
       </div>
 
-      <div class="card">
-        <h3>🧑‍🏫Coordinator</h3>
-        <p><b>Ms C. Shivani</b></p>
+      <div class="card" onclick="openFacultyProfile(
+       'shivani.jpeg',
+       'Ms C. Shivani',
+       'Assistant Professor (Coordinator)',
+       'shivani.ece@svit.atp.ac.in',
+       '8142021539',
+      
+      `Chigli Shivani is an Assistant Professor at SVIT Engineering College, Anantapur, with over six years of academic experience.<br><br>
+      ✅2 years of industry experience in VLSI design and development.<br>
+       ✅6+ years of academic experience in teaching and research.<br><br>
+       Prior to entering academia, she spent two years in the VLSI industry, gaining valuable practical insights that inform her teaching and research.<br><br>
+       She completed her M.Tech in 2016 from Jawaharlal Nehru Technological University Anantapur (JNTUA).<br><br>
+       Her interests lie in bridging the gap between industry practices and academic instruction.`
+      )">
+        <img src="shivani.jpeg" alt="Co-Convenor">
+        <h3>🧑‍🏫 Co-Convenor</h3>
+        <p><b>Ms. C. Shivani</b></p>
         <p>Assistant Professor</p>
-        <p>Email: shivaniraghavhr@gmail.com</p>
       </div>
 
-      <div class="card">
-        <h3>🧑‍🏫Coordinator</h3>
-        <p><b>Mr S Raghavendra</b></p>
+      <div class="card" onclick="openFacultyProfile(
+        'ragava.jpeg',
+        'Mr S. Raghavendra',
+        'Assistant Professor (Coordinator)',
+        'raghav.matlab22@gmail.com',
+        '9704684513',
+        `S. Raghavendra, Asst. Professor in ECE Dept.<br><br>
+        ✅ 12 Years Experience in Engineering Teaching.<br>
+        ✅ 4.8 years experience in Real-Time industry as Model-Based Software Developer.<br><br>
+        <b>Skills:</b><br>
+        • Automation Software Testing<br>
+        • Developer Testing & Unit/Component Testing<br>
+        • Unit/Component Testing<br>
+        • Battery Test Engineer<br><br>
+        <b>Experience:</b><br>
+        Worked on Battery System Design, Development, Application and Validation.<br>
+        Worked on Model Based Development in MATLAB (Simulink/Stateflow).<br>
+        Strong in Auto C-code generation using RTWEC.<br><br>
+        <b>Strong Electrical & Electronics Background.</b>`
+      )">
+        <img src="ragava.jpeg" alt="Coordinator">
+        <h3>🧑‍🏫 Coordinator</h3>
+        <p><b>Mr S. Raghavendra</b></p>
         <p>Assistant Professor</p>
-        <p>Email: raghav.matlab22@gmail.com</p>
-        <p>Phone: 9704684513</p>
       </div>
 
-      <div class="card">
-        <h3>🧑‍🏫Coordinator</h3>
-        <p><b>Mr J.E. Siva</b></p>
-        <p>Assistant Professor</p>
-        <p>Phone: 9542075304</p>
-      </div>
 
-      <div class="card">
-        <h3>🧑‍🏫Coordinator</h3>
-        <p><b>Mr L. Rangaswamy</b></p>
-        <p>Assistant Professor</p>
-        <p>Phone: 8555830867</p>
-      </div>
 
-      <div class="card">
-        <h3>🧑‍🏫Coordinator</h3>
-        <p><b>Ms B. Kumari</b></p>
-        <p>Assistant Professor</p>
-        <p>Phone: 9550102170</p>
-      </div>
-
-      <div class="card">
-        <h3>🧑‍🏫Coordinator</h3>
-        <p><b>Miss B. Lakshmi Leela</b></p>
-        <p>Assistant Professor</p>
-        <p>Phone: 6300861317</p>
-      </div>
-
-      <div class="card">
-        <h3>🧑‍🏫Technical Staff</h3>
-        <p><b>Mr D. Deepak</b></p>
-        <p>System Administrator</p>
-        <p>Phone: 9908832311</p>
-      </div>
-
-      <div class="card">
-        <h3>🧑‍🏫Technical Staff</h3>
-        <p><b>Mr A. Srinivasulu</b></p>
-        <p>Attender</p>
-        <p>Phone: 6302933578</p>
-      </div>
-
+    <div class="card" onclick="openFacultyProfile(
+      'faculty5.jpg',
+      'Mr J.E. Siva',
+      'Assistant Professor (Coordinator)',
+      'Not Available',
+      '9542075304'
+    )">
+      <img src="faculty5.jpg" alt="Coordinator">
+      <h3>🧑‍🏫 Coordinator</h3>
+      <p><b>Mr J.E. Siva</b></p>
+      <p>Assistant Professor</p>
     </div>
-  </section>
+
+    <div class="card" onclick="openFacultyProfile(
+      'rangaswami.jpeg',
+      'Mr L. Rangaswamy',
+      'Assistant Professor (Coordinator)',
+      'Not Available',
+  '8555830867',
+  `Possessing <b>15 years of expertise</b> in the field of education.<br><br>
+
+  He is presently serving as the <b>Assistant Professor</b> at <b>Sri Venkateswara Institute of Technology (SVIT)</b>, Anantapur.<br><br>
+
+  He is undertaking his <b>M.Tech</b> in <b>Sri Srinivasa Institute of Technology and Management Sciences</b>, Chittoor.<br><br>
+
+  He has published more than <b>10 national</b> and <b>12 international</b> research articles and has coached countless businesses and students in entrepreneurship and technology.<br><br>
+
+  <b>Technical Skills:</b><br>
+  ✅ Foundational knowledge in SQL<br>
+  ✅ Proficiency in Visual Basic<br>
+  ✅ Expertise in B2SPICE, CADFEKO, HFSS, MATLAB, and LaTeX<br><br>
+
+  Under his guidance, over <b>30 undergraduate projects</b> and more than <b>10 postgraduate projects</b> have been performed using creative solutions.`
+)">
+
+      <img src="rangaswami.jpeg" alt="Coordinator">
+      <h3>🧑‍🏫 Coordinator</h3>
+      <p><b>Mr L. Rangaswamy</b></p>
+      <p>Assistant Professor</p>
+    </div>
+
+    <div class="card" onclick="openFacultyProfile(
+      'kumari.jpeg',
+      'Ms B. Kumari',
+      'Assistant Professor (Coordinator)',
+      'Not Available',
+      '9550102170',
+      `B. Kumari is an Assistant Professor in the ECE Department and has 8 years of expertise in the field of education.<br><br>
+      She is presently working as an Assistant Professor at Sri Venkateswara Institute of Technology (SVIT), Anantapur.<br><br>
+      She earned her M.Tech from Intellectual Engineering College, Anantapur.<br><br>
+      She has published more than 10 national and 2 international research articles and has coached countless businesses and students in entrepreneurship and technology.`
+    )">
+      <img src="kumari.jpeg" alt="Coordinator">
+      <h3>🧑‍🏫 Coordinator</h3>
+      <p><b>Ms B. Kumari</b></p>
+      <p>Assistant Professor</p>
+    </div>
+
+    <div class="card" onclick="openFacultyProfile(
+      'faculty8.jpg',
+      'Miss B. Lakshmi Leela',
+      'Assistant Professor (Coordinator)',
+      'Not Available',
+      '6300861317'
+    )">
+      <img src="faculty8.jpg" alt="Coordinator">
+      <h3>🧑‍🏫 Coordinator</h3>
+      <p><b>Miss B. Lakshmi Leela</b></p>
+      <p>Assistant Professor</p>
+    </div>
+
+    
+
+    <div class="card" onclick="openFacultyProfile(
+      'faculty12.jpg',
+      'Mr.Kumar',
+      'System Operator (Technical Staff)',
+      'Not Available',
+      'Not Available'
+    )">
+      <img src="faculty12.jpg" alt="Technical Staff">
+      <h3>🧑‍🏫 Technical Staff</h3>
+      <p><b>Mr. Kumar</b></p>
+      <p>Assistent Professor</p>
+    </div>
+
+    <div class="card" onclick="openFacultyProfile(
+      'faculty10.jpg',
+      'Miss.S. HariPriya',
+      'Technical Staff',
+      'Not Available',
+      'Not Available'
+    )">
+      <img src="faculty10.jpg" alt="Technical Staff">
+      <h3>🧑‍🏫 Technical Staff</h3>
+      <p><b>Miss. HariPriya</b></p>
+      <p></p>
+    </div>
+
+    <div class="card" onclick="openFacultyProfile(
+      'ram mohan.jpeg',
+      'Mr. P. Ram Mohan Reddy',
+      'LAB Incharge',
+      '9949040783',
+      'rammohan.lab@svitatp.ac.in',
+      `Having 3 years of Experience in SOC Monitoring, with security operations including Incident management through SIEM<br>
+      At Cognizant Bangalore.<br>
+      And one year experience lab incharge`
+    )">
+      <img src="ram mohan.jpeg" alt="Technical Staff">
+      <h3>🧑‍🏫 Technical Staff</h3>
+      <p><b>Mr. P. Ram Mohan Reddy</b></p>
+      <p>LAB Incharge</p>
+    </div>
+
+    <div class="card" onclick="openFacultyProfile(
+      'faculty9.jpg',
+      'Mr D. Deepak',
+      'System Administrator (Technical Staff)',
+      'Not Available',
+      '9908832311'
+    )">
+      <img src="faculty9.jpg" alt="Technical Staff">
+      <h3>🧑‍🏫 Technical Staff</h3>
+      <p><b>Mr D. Deepak</b></p>
+      <p>System Administrator</p>
+    </div>
+
+    <div class="card" onclick="openFacultyProfile(
+      'faculty13.jpg',
+      'Mr A. Srinivasulu',
+      'Attender (Technical Staff)',
+      'Not Available',
+      '6302933578'
+    )">
+      <img src="faculty13.jpg" alt="Technical Staff">
+      <h3>🧑‍🏫 Technical Staff</h3>
+      <p><b>Mr A. Srinivasulu</b></p>
+      <p>Attender</p>
+    </div>
+
+  </div>
+</section>
+
 
   <!-- ===================== REGISTER FORM ===================== -->
- <section id="register">
-  <h2>Student Registration Form</h2>
+<section id="register">
+  <div class="form-container">
+    <h2>📑 Student Presentation Registration Form</h2>
 
-  <iframe 
-    src="https://docs.google.com/forms/d/e/1FAIpQLSc7wuZcrLtMOyKGAxLyjln-YHIMJPzxuJKBOwHYiN7QoekuKA/viewform?embedded=true"
-    width="100%"
-    height="800"
-    frameborder="0"
-    marginheight="0"
-    marginwidth="0">
-    Loading…
-  </iframe>
+    <form id="presentationForm">
+
+      <!-- Unique Registration ID -->
+      <label>Unique Registration ID (Auto Generated)</label>
+      <input type="text" id="regID" readonly />
+
+      <label>Number of Participants</label>
+      <input type="number" id="numParticipants" min="1" max="3"
+        placeholder="Enter number of participants (Max 3)" required />
+
+      <div id="participantsContainer"></div>
+
+      <label>College Name</label>
+      <input type="text" id="collegeName" placeholder="Enter your college name" required />
+
+      <label>Contact Number</label>
+      <input type="text" id="mobile_number" placeholder="Enter contact Mobile Number" required />
+
+      <label>Mail ID</label>
+      <input type="text" id="mailID" placeholder="Enter mail ID" required />
+
+      <label>Title of the Presentation</label>
+      <input type="text" id="presentationTitle" placeholder="Enter presentation title" required />
+
+      <label>Abstract</label>
+      <textarea id="abstract" placeholder="Write abstract here..." required></textarea>
+
+      <label>Upload Abstract File (PDF/DOC)</label>
+      <input type="file" id="abstractFile" accept=".pdf,.doc,.docx" required>
+
+
+     <!-- ================= PAYMENT SECTION ================= -->
+<h3 style="text-align:center; color:#00296b; margin-top:30px;">💳 Payment Details</h3>
+
+<div class="participant-box" style="text-align:center;">
+
+  <p style="font-size:16px; font-weight:bold; color:#001f54;">
+    Registration Fee: ₹100 per Participant
+  </p>
+
+  <label>Total Amount to Pay</label>
+  <input type="text" id="totalAmount" readonly placeholder="₹0" />
+
+  <hr style="margin:20px 0;">
+
+  <p style="font-size:15px; font-weight:bold; color:#00509d;">
+    Pay using UPI (Google Pay / PhonePe / Paytm)
+  </p>
+
+  <p style="font-size:16px;">
+    <b>UPI ID:</b> <span style="color:#d00000;">123456789@upi</span>
+  </p>
+
+  <p style="font-size:14px; color:#333;">
+    Scan the QR Code below to pay
+  </p>
+
+  <!-- QR Code Image -->
+  <img src="qr.jpg" alt="UPI QR Code"
+       style="width:220px; border-radius:15px; border:4px solid #00509d;
+              box-shadow:0px 6px 15px rgba(0,0,0,0.2);">
+
+  <p style="margin-top:15px; font-size:14px; color:#444;">
+    After payment, enter Transaction ID and upload screenshot below.
+  </p>
+
+</div>
+
+<label>Transaction ID / UPI Reference Number*</label>
+<input type="text" id="transactionID" placeholder="Enter Transaction ID" required />
+
+<label>Upload Payment Screenshot*</label>
+<input type="file" id="paymentScreenshot" accept="image/*" required />
+
+
+      <!-- ================= END PAYMENT SECTION ================= -->
+
+      <button type="submit" class="submit-btn">Submit Registration</button>
+
+    </form>
+  </div>
 </section>
 
 
@@ -889,18 +1518,269 @@
 </section>
 
 
+ <div id="facultyModal" class="faculty-modal">
+    <div class="faculty-modal-content">
 
+     <span class="close-btn" onclick="closeFacultyProfile()">✖</span>
+<div style="clear:both;"></div>
+
+
+      <img id="facultyImg" src="" alt="Faculty Image">
+      <h2 id="facultyName"></h2>
+      <h4 id="facultyRole"></h4>
+
+      <p><b>Email:</b> <span id="facultyEmail"></span></p>
+      <p><b>Phone:</b> <span id="facultyPhone"></span></p>
+
+      <div id="facultyAbout" class="faculty-about"></div>
+
+    </div>
+  </div>
   <!-- ===================== FOOTER ===================== -->
   <footer>
     <p>© 2026 SVIT - ECE Department | Designed for Official Department Website</p>
   </footer>
 
   <!-- ===================== JAVASCRIPT ===================== -->
-  <script>
-    function toggleMenu() {
-      document.getElementById("menu").classList.toggle("active");
+ <script>
+  // =================== Generate Random Registration ID ===================
+  function generateRegID() {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let code = "";
+    for (let i = 0; i < 10; i++) {
+      code += chars.charAt(Math.floor(Math.random() * chars.length));
     }
-  </script>
+    return code;
+  }
+
+  // =================== Set Registration ID on Page Load ===================
+  window.onload = function () {
+    document.getElementById("regID").value = generateRegID();
+  };
+
+  const numParticipants = document.getElementById("numParticipants");
+  const participantsContainer = document.getElementById("participantsContainer");
+  const totalAmount = document.getElementById("totalAmount");
+
+  // =================== Dynamic Participant Inputs + Payment Calculation ===================
+  numParticipants.addEventListener("input", function () {
+    let count = parseInt(numParticipants.value);
+
+    participantsContainer.innerHTML = "";
+
+    // Validate count
+    if (count > 3) {
+      alert("❌ Maximum participants allowed is 3 only!");
+      numParticipants.value = 3;
+      count = 3;
+    }
+
+    if (count < 1 || isNaN(count)) {
+      totalAmount.value = "";
+      return;
+    }
+
+    // Auto calculate total payment
+    totalAmount.value = "₹" + (count * 100);
+
+    // Create participant fields
+    for (let i = 1; i <= count; i++) {
+      const participantDiv = document.createElement("div");
+      participantDiv.classList.add("participant-box");
+
+      participantDiv.innerHTML = `
+        <h4>👤 Participant ${i}</h4>
+
+        <label>Participant Name</label>
+        <input type="text" id="participantName${i}" placeholder="Enter participant ${i} name" required />
+
+        <label>Hall Ticket Number</label>
+        <input type="text" id="hallTicket${i}" placeholder="Enter participant ${i} hall ticket number" required />
+      `;
+
+      participantsContainer.appendChild(participantDiv);
+    }
+  });
+
+  // =================== Form Submit Validation ===================
+  document.getElementById("presentationForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const regID = document.getElementById("regID").value;
+    const collegeName = document.getElementById("collegeName").value.trim();
+    const mobileNumber = document.getElementById("mobile_number").value.trim();
+    const mailID = document.getElementById("mailID").value.trim();
+    const title = document.getElementById("presentationTitle").value.trim();
+    const abstract = document.getElementById("abstract").value.trim();
+
+    const transactionID = document.getElementById("transactionID").value.trim();
+    const screenshotInput = document.getElementById("paymentScreenshot");
+    const screenshotFile = screenshotInput.files[0];
+
+    const count = parseInt(numParticipants.value);
+
+    // Validate participants count
+    if (isNaN(count) || count < 1 || count > 3) {
+      alert("❌ Please enter valid number of participants (1 to 3).");
+      return;
+    }
+
+    // Validate mandatory normal fields
+    if (collegeName === "" || mobileNumber === "" || mailID === "" || title === "" || abstract === "") {
+      alert("❌ Please fill all required fields!");
+      return;
+    }
+
+    // Validate Transaction ID
+    if (transactionID === "") {
+      alert("❌ Transaction ID is Mandatory!");
+      document.getElementById("transactionID").focus();
+      return;
+    }
+
+    if (transactionID.length < 6) {
+      alert("❌ Invalid Transaction ID! Please enter correct Transaction ID.");
+      document.getElementById("transactionID").focus();
+      return;
+    }
+
+    // Validate Screenshot Upload
+    if (!screenshotFile) {
+      alert("❌ Payment Screenshot is Mandatory!");
+      screenshotInput.focus();
+      return;
+    }
+
+    // Validate Screenshot Type
+    const allowedTypes = ["image/jpeg", "image/png", "image/jpg", "image/webp"];
+    if (!allowedTypes.includes(screenshotFile.type)) {
+      alert("❌ Please upload only Image Files (JPG, PNG, WEBP).");
+      screenshotInput.value = "";
+      return;
+    }
+
+    // Validate Screenshot Size (Max 2MB)
+    if (screenshotFile.size > 2 * 1024 * 1024) {
+      alert("❌ Screenshot size must be below 2MB!");
+      screenshotInput.value = "";
+      return;
+    }
+
+    // Collect Participants Data
+    let participantsData = "";
+    for (let i = 1; i <= count; i++) {
+      const pname = document.getElementById(`participantName${i}`).value.trim();
+      const hall = document.getElementById(`hallTicket${i}`).value.trim();
+
+      if (pname === "" || hall === "") {
+        alert("❌ Please fill all participant details!");
+        return;
+      }
+
+      participantsData += `Participant ${i}: ${pname} (${hall})\n`;
+    }
+
+    // Success Message
+    alert(
+      "✅ Registration Submitted Successfully!\n\n" +
+      "Unique Registration ID: " + regID + "\n\n" +
+      "College: " + collegeName + "\n" +
+      "Mobile: " + mobileNumber + "\n" +
+      "Mail ID: " + mailID + "\n\n" +
+      "Presentation Title: " + title + "\n\n" +
+      "Participants:\n" + participantsData + "\n" +
+      "Total Amount: ₹" + (count * 100) + "\n" +
+      "Transaction ID: " + transactionID + "\n\n" +
+      "📌 Screenshot Uploaded Successfully!\n" +
+      "🎉 Payment Verification will be done by Coordinator."
+    );
+
+    // Reset form
+    this.reset();
+    participantsContainer.innerHTML = "";
+    totalAmount.value = "";
+
+    // Generate new ID again
+    document.getElementById("regID").value = generateRegID();
+  });
+
+  const scriptURL = "https://script.google.com/macros/s/AKfycby7ss5toOaT531152ZSY8KcAQgSG-S-9RG9_mbC_HZ9FfBcZIGIFwPkGvGRhA7l0YKtCA/exec";
+
+document.getElementById("presentationForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const formData = new FormData();
+
+  formData.append("regID", document.getElementById("regID").value);
+  formData.append("collegeName", document.getElementById("collegeName").value);
+  formData.append("mobile", document.getElementById("mobile_number").value);
+  formData.append("mailID", document.getElementById("mailID").value);
+  formData.append("title", document.getElementById("presentationTitle").value);
+  formData.append("abstract", document.getElementById("abstract").value);
+
+  formData.append("transactionID", document.getElementById("transactionID").value);
+  formData.append("screenshot", document.getElementById("paymentScreenshot").files[0]);
+  formData.append("abstractFile", document.getElementById("abstractFile").files[0]);
+
+  const count = parseInt(document.getElementById("numParticipants").value);
+  formData.append("numParticipants", count);
+
+  // Participants data
+  let participants = [];
+  for (let i = 1; i <= count; i++) {
+    participants.push({
+      name: document.getElementById(`participantName${i}`).value,
+      hallTicket: document.getElementById(`hallTicket${i}`).value
+    });
+  }
+
+  formData.append("participants", JSON.stringify(participants));
+
+  // Send to backend
+  const response = await fetch("http://localhost:5000/register", {
+    method: "POST",
+    body: formData
+  });
+
+  const result = await response.json();
+  alert(result.message);
+});
+
+
+
+
+  // =================== FACULTY PROFILE POPUP ===================
+  // =================== FACULTY PROFILE POPUP ===================
+function openFacultyProfile(img, name, role, email, phone, about) {
+  const modal = document.getElementById("facultyModal");
+
+  modal.style.display = "flex";
+
+  document.getElementById("facultyImg").src = img;
+  document.getElementById("facultyName").innerHTML = name;
+  document.getElementById("facultyRole").innerHTML = role;
+  document.getElementById("facultyEmail").innerHTML = email;
+  document.getElementById("facultyPhone").innerHTML = phone;
+
+  // About section
+  document.getElementById("facultyAbout").innerHTML = about || "";
+}
+
+// Close popup
+function closeFacultyProfile() {
+  document.getElementById("facultyModal").style.display = "none";
+}
+
+// Close modal if clicked outside content
+window.addEventListener("click", function (event) {
+  const modal = document.getElementById("facultyModal");
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+})
+
+
+</script>
 
 </body>
 </html>
