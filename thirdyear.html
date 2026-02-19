@@ -1,0 +1,274 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SVIT ECE Academics</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f9ff, #ffffff, #f0f7ff);
+      background-attachment: fixed;
+      color: #222;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top left, rgba(0, 200, 255, 0.12), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(255, 213, 0, 0.10), transparent 55%),
+                  radial-gradient(circle at center, rgba(0, 41, 107, 0.06), transparent 60%);
+      z-index: -1;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: #001f54;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 40px;
+      z-index: 999;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+    }
+
+    nav .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      padding: 10px 15px;
+      border-radius: 12px;
+      transition: 0.3s ease-in-out;
+    }
+
+    nav ul li a:hover {
+      background: #00d4ff;
+      color: black;
+      box-shadow: 0px 0px 15px #00d4ff, 0px 0px 35px #00d4ff;
+      transform: scale(1.08);
+    }
+
+    section {
+      background: rgba(255, 255, 255, 0.75);
+      margin: 30px auto;
+      border-radius: 18px;
+      padding: 60px 40px;
+      max-width: 1200px;
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.06);
+      backdrop-filter: blur(10px);
+    }
+
+    section h2 {
+      text-align: center;
+      color: #00296b;
+      font-size: 32px;
+      margin-bottom: 25px;
+    }
+
+    .academic-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.12);
+    }
+
+    .academic-table th {
+      background: #00296b;
+      color: white;
+      padding: 14px;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    .academic-table td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .academic-table tr:hover td {
+      background: rgba(0, 212, 255, 0.18);
+      transform: scale(1.01);
+    }
+
+    .break {
+      background: #ffeaa7;
+      font-weight: bold;
+    }
+
+    .lunch {
+      background: #fab1a0;
+      font-weight: bold;
+    }
+
+    .btn-back {
+      display: inline-block;
+      padding: 12px 18px;
+      background: #00509d;
+      color: white;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-back:hover {
+      background: #00d4ff;
+      color: black;
+      box-shadow: 0px 0px 15px #00d4ff, 0px 0px 30px #00d4ff;
+      transform: scale(1.08);
+    }
+
+    footer {
+      text-align: center;
+      background: #001f54;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+      box-shadow: 0px -5px 20px rgba(0,0,0,0.25);
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">SVIT - ECE Academics</div>
+    <ul>
+      <li><a href="#year2">2nd Year</a></li>
+      <li><a href="#year3">3rd Year</a></li>
+      <li><a href="#mtech">M.Tech</a></li>
+      <li><a href="SVIT.html">Home</a></li>
+    </ul>
+  </nav>
+
+
+
+
+
+<!-- ================= 3RD YEAR ================= -->
+  <section id="year3">
+    <h2>3rd Year Time Table III-II (ECE-A) (214)</h2>
+
+    <div style="overflow-x:auto;">
+      <table class="academic-table">
+        <tr>
+          <th>Day</th><th>09:30-10:30</th><th>10:30-11:30</th><th>11:30-11:50</th>
+          <th>11:50-12:50</th><th>12:50-01:30</th><th>01:30-02:30</th>
+          <th>02:30-03:30</th><th>03:30-04:30</th>
+        </tr>
+
+        <tr>
+          <td>Mon</td><td>MWE</td><td>DSP</td><td class="break">BREAK</td>
+          <td>VLSI/Placement</td><td class="lunch">LUNCH</td><td colspan="3">MWOC LAB</td>
+        </tr>
+
+        <tr>
+          <td>Tue</td><td>SC</td><td>ESIOT</td><td class="break">BREAK</td>
+          <td>DSP</td><td class="lunch">LUNCH</td><td>OS</td><td>SC</td><td>Placement/OS</td>
+        </tr>
+
+        <tr>
+          <td>Wed</td><td>DSP</td><td>MWE</td><td class="break">BREAK</td>
+          <td>TP</td><td class="lunch">LUNCH</td><td colspan="3">VLSI LAB</td>
+        </tr>
+
+        <tr>
+          <td>Thu</td><td>ESIOT</td><td>VLSI</td><td class="break">BREAK</td>
+          <td>SC</td><td class="lunch">LUNCH</td><td>OS</td><td>MWE</td><td>Library/DSP</td>
+        </tr>
+
+        <tr>
+          <td>Fri</td><td>VLSI</td><td>OS</td><td class="break">BREAK</td>
+          <td>TP</td><td class="lunch">LUNCH</td><td>MWE</td><td>ESIOT</td><td>Placements/SC</td>
+        </tr>
+
+        <tr>
+          <td>Sat</td><td>OS</td><td>ESIOT/Placement</td><td class="break">BREAK</td>
+          <td>VLSI</td><td class="lunch">LUNCH</td><td colspan="3">MLDSP LAB</td>
+        </tr>
+      </table>
+    </div>
+
+
+    <h2>3rd Year Time Table III-II (ECE-B) (215)</h2>
+
+    <div style="overflow-x:auto;">
+      <table class="academic-table">
+        <tr>
+          <th>Day</th><th>09:30-10:30</th><th>10:30-11:30</th><th>11:30-11:50</th>
+          <th>11:50-12:50</th><th>12:50-01:30</th><th>01:30-02:30</th>
+          <th>02:30-03:30</th><th>03:30-04:30</th>
+        </tr>
+
+        <tr>
+          <td>Mon</td><td>VLSI</td><td>SC</td><td class="break">BREAK</td>
+          <td>OS</td><td class="lunch">LUNCH</td><td>ESIOT</td><td>DSP/Placement</td><td>Library/SC</td>
+        </tr>
+
+        <tr>
+          <td>Tue</td><td>DSP</td><td>MWE</td><td class="break">BREAK</td>
+          <td>OS</td><td class="lunch">LUNCH</td><td colspan="3">MWE & OC LAB</td>
+        </tr>
+
+        <tr>
+          <td>Wed</td><td>SC</td><td>DSP</td><td class="break">BREAK</td>
+          <td>VLSI</td><td class="lunch">LUNCH</td><td>ESIOT</td><td>TP</td><td>Placement/MWE</td>
+        </tr>
+
+        <tr>
+          <td>Thu</td><td>MWE</td><td>ESIOT</td><td class="break">BREAK</td>
+          <td>OS</td><td class="lunch">LUNCH</td><td colspan="3">VLSI LAB</td>
+        </tr>
+
+        <tr>
+          <td>Fri</td><td>OS</td><td>VLSI</td><td class="break">BREAK</td>
+          <td>MWE</td><td class="lunch">LUNCH</td><td colspan="3">ML & DSP LAB</td>
+        </tr>
+
+        <tr>
+          <td>Sat</td><td>ESIOT</td><td>SC</td><td class="break">BREAK</td>
+          <td>DSP</td><td class="lunch">LUNCH</td><td>VLSI</td><td>TP</td><td>Placements/OS</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <br><br>
+    <center>
+      <a href="index.html" class="btn-back">⬅ Back to Home</a>
+    </center>
+  </section>
+
+  <footer>
+    <p>© 2026 SVIT - ECE Department Academics Page</p>
+  </footer>
+</body>
+</html>
+
+  
