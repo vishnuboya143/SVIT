@@ -485,6 +485,33 @@
   z-index: 2;
 }
 
+.fest-title {
+  font-size: 45px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(
+    90deg,
+    #ff0000,
+    #ff9900,
+    #ffee00,
+    #00ff00,
+    #00ffff,
+    #0000ff,
+    #ff00ff
+  );
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowMove 5s linear infinite;
+  letter-spacing: 2px;
+}
+
+/* Animation */
+@keyframes rainbowMove {
+  0% { background-position: 0%; }
+  100% { background-position: 300%; }
+}
+
 /* Paragraph */
 #fest p {
   max-width: 850px;
@@ -1125,8 +1152,7 @@ input[type="file"]:hover {
    <!-- ===================== Fest ===================== -->
 
     <section id="fest">
-  <h2>⚡ ElectroMania</h2>
-
+  <h2 class="fest-title">⚡ElectroMenia 2K26</h2>
   <p>
     ElectroMenia is the annual technical fest of the ECE department, showcasing
     student talent through workshops, competitions, and exhibitions in electronics
@@ -1322,11 +1348,11 @@ input[type="file"]:hover {
        'shivani.ece@svit.atp.ac.in',
        '8142021539',
       
-      `<b>Chigli Shivani</b> is an Assistant Professor at <b>SVIT Engineering College, Anantapur</b>, with over six years of academic experience.<br><br>
-      ✅<b>2 years </b> of industry experience in </b> VLSI design and development</b>.<br>
-       ✅<b>6+ years</b> of academic experience in teaching and research.<br><br>
+      `Chigli Shivani is an Assistant Professor at SVIT Engineering College, Anantapur, with over six years of academic experience.<br><br>
+      ✅2 years of industry experience in VLSI design and development.<br>
+       ✅6+ years of academic experience in teaching and research.<br><br>
        Prior to entering academia, she spent two years in the VLSI industry, gaining valuable practical insights that inform her teaching and research.<br><br>
-       She completed her M.Tech in 2016 from <b>Jawaharlal Nehru Technological University Anantapur (JNTUA)</b>.<br><br>
+       She completed her M.Tech in 2016 from Jawaharlal Nehru Technological University Anantapur (JNTUA).<br><br>
        Her interests lie in bridging the gap between industry practices and academic instruction.`
       )">
         <img src="shivani.jpeg" alt="Co-Convenor">
@@ -1364,13 +1390,35 @@ input[type="file"]:hover {
 
 
     <div class="card" onclick="openFacultyProfile(
-      'faculty5.jpg',
+      'shiva.jpeg',
       'Mr J.E. Siva',
       'Assistant Professor (Coordinator)',
-      'Not Available',
-      '9542075304'
+      'shiva@svit.atp.ac.in',
+      '9542075304',
+      `<b>👨‍🏫 Mr. J. E. Siva</b><br>
+Assistant Professor – Electronics & Communication Engineering<br><br>
+
+<b>💼 Professional Experience:</b><br>
+• 8+ years of Teaching Experience in Engineering Education.<br>
+• Guided 16 UG Projects & 8 PG Projects.<br>
+• Two-time Best Performance Award Recipient.<br><br>
+
+<b>🎯 Technical Skills & Expertise:</b><br>
+• VLSI Design & Testing (BIST, SRAM Design, ASIC Design).<br>
+• Embedded Systems & Arduino Applications.<br>
+• Wireless Communication & Optical Communication Systems.<br>
+• FPGA & Error Detection/Correction Systems (Viterbi Decoder).<br>
+• RF Systems & Sensor-Based Applications.<br>
+• Internet of Things (IoT) & Cloud Computing Concepts.<br>
+• Signal Processing & Communication Engineering.<br><br>
+
+<b>📚 Research & Publications:</b><br>
+• 12+ International Journal Publications.<br>
+• 2 International Conference Presentations.<br>
+• 2 Book Publications (Analog & Mixed Signal Circuits).<br>
+• NPTEL Certified – IoT & Cloud Computing (IIT Kharagpur).`
     )">
-      <img src="faculty5.jpg" alt="Coordinator">
+      <img src="shiva.jpeg" alt="Coordinator">
       <h3>🧑‍🏫 Coordinator</h3>
       <p><b>Mr J.E. Siva</b></p>
       <p>Assistant Professor</p>
