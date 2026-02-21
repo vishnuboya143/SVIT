@@ -1152,7 +1152,7 @@ input[type="file"]:hover {
    <!-- ===================== Fest ===================== -->
 
     <section id="fest">
-  <h2 class="fest-title">⚡ElectroMenia 2K26</h2>
+  <h2 class="fest-title">⚡ElectroMania 2K26</h2>
   <p>
     ElectroMenia is the annual technical fest of the ECE department, showcasing
     student talent through workshops, competitions, and exhibitions in electronics
@@ -1331,9 +1331,25 @@ input[type="file"]:hover {
         'SHAVALI.jpeg',
         'Dr V Shavali',
         'Professor (Co-Convenor)',
-        'Not Available',
-        '77889278',
-        'Co-Convenor of the event and Professor in ECE Department.'
+        'v.shavali@gmail.com',
+        '9177889278',
+        `<b>Co-Convenor  Department of ECE</b><br><br>
+          Dr. V. Shavali is an accomplished academician with an M.Tech and Ph.D. in Electronics and Communication Engineering from JNTUA, Anantapur, Andhra Pradesh. He currently serves as the Head of Department (HOD) &  Professor, Department of ECE at SVIT, Atp.<br><br>
+          <b>Academic & Professional Experience</b><br>
+            - 18 years of teaching experience in Electronics and Communication Engineering and allied subjects.
+            - Extensive contributions to academia through teaching, mentoring, and research.<br><br>
+          <b>Research & Publications</b><br>
+            - 10 research articles published in reputed international journals.
+            - 20 international publications showcasing innovation and scholarly excellence.
+            - 1 patent authored, reflecting his commitment to advancing knowledge in ECE.
+            - Editorial Board Member and Reviewer for multiple international journals.<br><br>
+          <b>Conferences & Professional Development</b><br>
+            - Attended 25 workshops, 20 Faculty Development Programs (FDPs), and 15 webinars.
+            - Presented research at 4 National Conferences and 5 International Conferences.<br><br>
+            <B>Areas of Interest</B><br>
+            - Low Power VLSI Design
+            - Digital Systems
+            - Power Encoding Techniques`
       )">
         <img src="SHAVALI.jpeg" alt="Co-Convenor">
         <h3>🧑‍🏫 Co-Convenor</h3>
@@ -1343,7 +1359,7 @@ input[type="file"]:hover {
 
       <div class="card" onclick="openFacultyProfile(
        'shivani.jpeg',
-       'Mrs C. Shivani',
+       'Ms C. Shivani',
        'Assistant Professor (Coordinator)',
        'shivani.ece@svit.atp.ac.in',
        '8142021539',
@@ -1356,8 +1372,8 @@ input[type="file"]:hover {
        Her interests lie in bridging the gap between industry practices and academic instruction.`
       )">
         <img src="shivani.jpeg" alt="Co-Convenor">
-        <h3>🧑‍🏫 Co-Convenor</h3>
-        <p><b>Mrs. C. Shivani</b></p>
+        <h3>🧑‍🏫 Co-Ordinator</Co-Ordinator></h3>
+        <p><b>Ms. C. Shivani</b></p>
         <p>Assistant Professor</p>
       </div>
 
@@ -1932,10 +1948,10 @@ document.getElementById("presentationForm").addEventListener("submit", async fun
   formData.append("participants", JSON.stringify(participants));
 
   // Send to backend
-  const response = await fetch("http://localhost:5000/register", {
+  fetch("http://localhost:5000/register", {
     method: "POST",
-    body: formData
-  });
+  body: formData
+});
 
   const result = await response.json();
   alert(result.message);
