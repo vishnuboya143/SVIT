@@ -10,7 +10,7 @@ app.use(express.json());
 
 // ====== PostgreSQL Connection (Render) ======
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || "postgresql://ece_department:CWpZrA6P1rvDXHuODMj9XdGPGmPLI5N0@dpg-d6cr583h46gs73cnon40-a.singapore-postgres.render.com/ecesvit",
+  connectionString: process.env.DATABASE_URL || "postgresql://ece_department:3XUfPfvm2jSXbY4KyLUA4hOcDDs85Ke3@dpg-d6e57vnpm1nc73a7rgvg-a.singapore-postgres.render.com/ecesvit_r1ix",
   ssl: { rejectUnauthorized: false } // Render requires SSL
 });
 
