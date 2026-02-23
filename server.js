@@ -1,83 +1,99 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
+const { Pool } = require("pg");
 const path = require("path");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ===== File Upload Setup =====
+// ====== PostgreSQL Connection (Render) ======
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL || "postgresql://ece_department:CWpZrA6P1rvDXHuODMj9XdGPGmPLI5N0@dpg-d6cr583h46gs73cnon40-a.singapore-postgres.render.com/ecesvit",
+  ssl: { rejectUnauthorized: false } // Render requires SSL
+});
+
+// ====== Multer Storage for File Uploads ======
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + "-" + file.originalname);
-  }
+  destination: (req, file, cb) => cb(null, "uploads/"),
+  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
 });
+const upload = multer({ storage });
 
-const upload = multer({ storage: storage });
+// ====== Create Table if Not Exists ======
+const initDB = async () => {
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS registrations (
+      id SERIAL PRIMARY KEY,
+      regID VARCHAR(20),
+      collegeName TEXT,
+      mobile TEXT,
+      mailID TEXT,
+      title TEXT,
+      abstractText TEXT,
+      abstractFile TEXT,
+      transactionID TEXT,
+      paymentScreenshot TEXT,
+      participants JSONB,
+      totalAmount INT,
+      createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+};
+initDB();
 
-// ===== MongoDB Connection =====
-mongoose.connect("YOUR_MONGODB_CONNECTION_STRING")
-.then(() => console.log("✅ MongoDB Connected"))
-.catch(err => console.log(err));
-
-// ===== Schema =====
-const registrationSchema = new mongoose.Schema({
-  regID: String,
-  collegeName: String,
-  mobile: String,
-  mailID: String,
-  title: String,
-  abstract: String,
-  transactionID: String,
-  participants: Array,
-  screenshot: String,
-  abstractFile: String,
-  date: { type: Date, default: Date.now }
-});
-
-const Registration = mongoose.model("Registration", registrationSchema);
-
-// ===== Route =====
-app.post("/register",
-  upload.fields([
-    { name: "screenshot", maxCount: 1 },
-    { name: "abstractFile", maxCount: 1 }
-  ]),
+// ====== API Endpoint ======
+app.post(
+  "/register",
+  upload.fields([{ name: "screenshot" }, { name: "abstractFile" }]),
   async (req, res) => {
     try {
       const data = req.body;
+      const participants = JSON.parse(data.participants);
 
-      const newRegistration = new Registration({
+      const abstractFilePath = req.files["abstractFile"]
+        ? req.files["abstractFile"][0].path
+        : null;
+      const screenshotPath = req.files["screenshot"]
+        ? req.files["screenshot"][0].path
+        : null;
+
+      await pool.query(
+        `INSERT INTO registrations 
+        (regID, collegeName, mobile, mailID, title, abstractText, abstractFile, transactionID, paymentScreenshot, participants, totalAmount) 
+        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+        [
+          data.regID,
+          data.collegeName,
+          data.mobile,
+          data.mailID,
+          data.title,
+          data.abstract,
+          abstractFilePath,
+          data.transactionID,
+          screenshotPath,
+          JSON.stringify(participants),
+          data.totalAmount,
+        ]
+      );
+
+      res.json({
+        message: "✅ Registration saved successfully!",
         regID: data.regID,
-        collegeName: data.collegeName,
-        mobile: data.mobile,
-        mailID: data.mailID,
-        title: data.title,
-        abstract: data.abstract,
-        transactionID: data.transactionID,
-        participants: JSON.parse(data.participants),
-        screenshot: req.files["screenshot"][0].filename,
-        abstractFile: req.files["abstractFile"][0].filename
       });
-
-      await newRegistration.save();
-
-      res.json({ message: "✅ Registration Stored Successfully!" });
-
-    } catch (error) {
-      console.log(error);
-      res.status(500).json({ message: "❌ Server Error" });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ message: "❌ Error saving registration" });
     }
   }
 );
 
-// ===== Start Server =====
+// ====== Serve Uploaded Files ======
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// ====== Start Server ======
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log("🚀 Server running on port " + PORT);
-});
+app.listen(PORT, () =>
+  console.log(`🚀 Server running on http://localhost:${PORT}`)
+);
