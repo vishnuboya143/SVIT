@@ -2040,13 +2040,25 @@ window.addEventListener("click", function (event) {
   }
 })
 
-// ================= TARGET TODAY 8:40 AM =================
-const targetDate = new Date();
-targetDate.setHours(11, 31, 45, 0);
+// ================= Countdown =================
+function getNextFriday930AM() {
+  const now = new Date();
+  const target = new Date();
 
-if (new Date() > targetDate) {
-  targetDate.setDate(targetDate.getDate() + 1);
+  const daysUntilFriday = (5 - now.getDay() + 7) % 7;
+
+  target.setDate(now.getDate() + daysUntilFriday);
+  target.setHours(9, 30, 0, 0);
+
+  // If today is Friday and time already passed 9:30 AM
+  if (daysUntilFriday === 0 && now > target) {
+    target.setDate(target.getDate() + 7);
+  }
+
+  return target;
 }
+
+const targetDate = getNextFriday930AM();
 
 const timerElement = document.getElementById("timer");
 const celebrationText = document.getElementById("celebrationText");
@@ -2060,7 +2072,8 @@ function startConfetti() {
     confetti.classList.add("confetti");
     confetti.style.left = Math.random() * window.innerWidth + "px";
     confetti.style.backgroundColor =
-      ["#ff0000","#ffcc00","#00ffcc","#ff00ff","#00ff00"][Math.floor(Math.random()*5)];
+      ["#ff0000","#ffcc00","#00ffcc","#ff00ff","#00ff00"]
+      [Math.floor(Math.random()*5)];
     confetti.style.animationDuration = (Math.random()*3 + 2) + "s";
     document.body.appendChild(confetti);
   }
@@ -2085,12 +2098,13 @@ const interval = setInterval(() => {
     return;
   }
 
-  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
+  const seconds = Math.floor((distance / 1000) % 60);
 
   timerElement.innerHTML =
-    `${hours}h : ${minutes}m : ${seconds}s`;
+    `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
 
 }, 1000);
 
