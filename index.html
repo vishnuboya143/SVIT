@@ -1280,88 +1280,6 @@ input[type="checkbox"] {
   font-weight: bold;
   letter-spacing: 3px;
 }
-/* ================= COUNTDOWN SECTION ================= */
-.countdown-container {
-  padding: 120px 20px;
-  position: relative;
-  z-index: 2;
-}
-
-.big-text {
-  font-size: 42px;
-  font-weight: bold;
-  margin-bottom: 40px;
-  background: linear-gradient(90deg,#ffcc00,#ff512f,#dd2476);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ================= FIXED TIMER VISIBILITY ================= */
-.timer {
-  font-size: 75px;
-  font-weight: 900;
-  letter-spacing: 4px;
-  color: #ffffff;
-  text-shadow:
-    0 0 10px #00ffff,
-    0 0 20px #00ffff,
-    0 0 40px #00ffff,
-    0 0 80px #00ffff;
-}
-
-/* ================= CELEBRATION TEXT ================= */
-.celebration {
-  font-size: 55px;
-  font-weight: bold;
-  display: none;
-  margin-top: 100px;
-  color: #ffcc00;
-  text-shadow: 0 0 15px #ff512f;
-}
-
-/* ================= MANGO LEAVES TOP ================= */
-/* ================= MANGO LEAVES TOP ================= */
-.mango-top {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  background: url("https://static.vecteezy.com/system/resources/previews/025/734/037/original/mango-leaves-and-marigold-flowers-garland-for-indian-festival-decoration-png.png") repeat-x top center;
-  background-size: auto 120px;
-  display: none;
-  z-index: 5;
-}
-
-/* ================= GARLAND SIDES ================= */
-.garland-left,
-.garland-right {
-  position: fixed;
-  top: 0;
-  width: 120px;
-  height: 100vh;
-  background: url("https://static.vecteezy.com/system/resources/previews/025/734/037/original/mango-leaves-and-marigold-flowers-garland-for-indian-festival-decoration-png") repeat-y center;
-  background-size: 120px auto;
-  display: none;
-  z-index: 5;
-}
-
-.garland-left { left: 0; }
-.garland-right { right: 0; }
-
-/* ================= CONFETTI ================= */
-.confetti {
-  position: fixed;
-  width: 12px;
-  height: 12px;
-  animation: fall linear infinite;
-  z-index: 1;
-}
-
-@keyframes fall {
-  from { transform: translateY(-100px) rotate(0deg); }
-  to { transform: translateY(100vh) rotate(360deg); }
-}
 
   </style>
 </head>
@@ -1438,20 +1356,6 @@ input[type="checkbox"] {
   <p class="fest-description">
     ElectroMania is the annual technical fest of the ECE department, showcasing student talent through workshops, competitions, and exhibitions in electronics and communication engineering.
   </p>
-
- 
-<div class="mango-top"></div>
-<div class="garland-left"></div>
-<div class="garland-right"></div>
-
-<div class="countdown-container">
-  <div class="big-text">💥 THE BIG BANG IS GOING TO HAPPEN 💥</div>
-  <div class="timer" id="timer"></div>
-  <div class="celebration" id="celebrationText">
-    🎉 ELECTROMANIA HAS STARTED! 🎉
-  </div>
-</div>
-<br>
 
   <!-- Fest Poster -->
   <div class="poster-box">
@@ -2054,73 +1958,7 @@ window.addEventListener("click", function (event) {
   }
 })
 
-// ================= Countdown =================
-function getNextFriday1030AM() {
-  const now = new Date();
-  const target = new Date();
 
-  const daysUntilFriday = (5 - now.getDay() + 7) % 7;
-
-  target.setDate(now.getDate() + daysUntilFriday);
-  target.setHours(10, 30, 0, 0);
-
-  // If today is Friday and time already passed 9:30 AM
-  if (daysUntilFriday === 0 && now > target) {
-    target.setDate(target.getDate() + 7);
-  }
-
-  return target;
-}
-
-const targetDate = getNextFriday930AM();
-
-const timerElement = document.getElementById("timer");
-const celebrationText = document.getElementById("celebrationText");
-const mangoTop = document.querySelector(".mango-top");
-const garlandLeft = document.querySelector(".garland-left");
-const garlandRight = document.querySelector(".garland-right");
-
-function startConfetti() {
-  for (let i = 0; i < 200; i++) {
-    const confetti = document.createElement("div");
-    confetti.classList.add("confetti");
-    confetti.style.left = Math.random() * window.innerWidth + "px";
-    confetti.style.backgroundColor =
-      ["#ff0000","#ffcc00","#00ffcc","#ff00ff","#00ff00"]
-      [Math.floor(Math.random()*5)];
-    confetti.style.animationDuration = (Math.random()*3 + 2) + "s";
-    document.body.appendChild(confetti);
-  }
-}
-
-const interval = setInterval(() => {
-
-  const now = new Date().getTime();
-  const distance = targetDate - now;
-
-  if (distance <= 0) {
-    clearInterval(interval);
-
-    timerElement.style.display = "none";
-    celebrationText.style.display = "block";
-
-    mangoTop.style.display = "block";
-    garlandLeft.style.display = "block";
-    garlandRight.style.display = "block";
-
-    startConfetti();
-    return;
-  }
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / (1000 * 60)) % 60);
-  const seconds = Math.floor((distance / 1000) % 60);
-
-  timerElement.innerHTML =
-    `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
-
-}, 1000);
 
 </script>
 
