@@ -2062,7 +2062,7 @@ function getNextFriday1030AM() {
   const daysUntilFriday = (5 - now.getDay() + 7) % 7;
 
   target.setDate(now.getDate() + daysUntilFriday);
-  target.setHours(9, 30, 0, 0);
+  target.setHours(10, 30, 0, 0);
 
   // If today is Friday and time already passed 9:30 AM
   if (daysUntilFriday === 0 && now > target) {
